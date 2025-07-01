@@ -1,0 +1,15 @@
+---
+- name: VULN - ANON LDAP
+  hosts: dc
+  gather_facts: false
+  vars_files:
+    - ../../vars/main.yml
+
+  tasks:
+    - name: enable anonymous ldap bind
+      win_shell: |
+        $dse = ([ADSI]"LDAP://RootDSE")
+        $config = "LDAP://CN=Directory Service,CN=Windows NT,CN=Services,CN=Configuration,{{ domain_dn }}"
+        $ds = [ADSI]$config
+        $ds.Put("dSHeuristics","0000002")
+        $ds.SetInfo()

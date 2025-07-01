@@ -1,0 +1,15 @@
+---
+- name: VULN - KERBEROASTING
+  hosts: dc
+  gather_facts: false
+  vars_files:
+    - ../../vars/main.yml
+
+  vars:
+    kerberoast_account: "{{ delegation_accounts[0].name }}"
+    kerberoast_spn: "{{ delegation_accounts[0].service }}"
+
+  tasks:
+    - name: set spn for service account
+      win_shell: |
+        Set-ADUser -Identity "{{ kerberoast_account }}" -Add @{ServicePrincipalName="{{ kerberoast_spn }}"}

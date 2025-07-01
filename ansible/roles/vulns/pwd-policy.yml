@@ -1,0 +1,22 @@
+---
+- name: VULN - WEAK PASSWORD POLICY
+  hosts: dc
+  gather_facts: false
+  vars_files:
+    - ../../vars/main.yml
+
+  tasks:
+    - name: set weak password policy
+      win_shell: |
+        net accounts /minpwlen:4 /uniquepw:1
+        net accounts /lockoutduration:0 /lockoutthreshold:0
+        
+        secedit /export /cfg %userprofile%\Desktop\CurrentSec.txt
+        
+        (Get-Content %userprofile%\Desktop\CurrentSec.txt) -replace 'PasswordComplexity = 1', 'PasswordComplexity = 0' | Set-Content %userprofile%\Desktop\CurrentSec.txt
+        
+        secedit /configure /db %windir%\security\local.sdb /cfg %userprofile%\Desktop\CurrentSec.txt /areas SECURITYPOLICY
+        
+        Remove-Item %userprofile%\Desktop\CurrentSec.txt
+        
+        gpupdate /force

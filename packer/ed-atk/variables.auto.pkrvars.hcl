@@ -1,0 +1,9 @@
+iso_url      = "https://cdimage.kali.org/kali-2025.2/kali-linux-2025.2-installer-amd64.iso"
+iso_checksum = "sha256:5723d46414b45575aa8e199740bbfde49e5b2501715ea999f0573e94d61e39d3" 
+disk_size    = 32768
+ssh_username = "ed"
+ssh_password = "kali"
+vm_name      = "ed"
+cpus         = 2
+memory       = 4096
+headless     = true

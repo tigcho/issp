@@ -1,0 +1,67 @@
+domain_name: issp.local
+domain_dn: DC=issp,DC=local
+domain_admin_password: MyAdminPassword123!
+
+ad_ous:
+  - "Domain Users"
+  - "Security Groups"
+  - "Workstations"
+  - "Servers"
+  - "Service Accounts"
+
+ad_groups:
+  - name: "IT Service"
+    scope: global
+    ou: "OU=Security Groups,DC=issp,DC=local"
+  - name: "EDV"
+    scope: global
+    ou: "OU=Security Groups,DC=issp,DC=local"
+  - name: "HR"
+    scope: global
+    ou: "OU=Security Groups,DC=issp,DC=local"
+  - name: "Finance"
+    scope: global
+    ou: "OU=Security Groups,DC=issp,DC=local"
+  - name: "Sales"
+    scope: global
+    ou: "OU=Security Groups,DC=issp,DC=local"
+
+ad_users:
+  - name: "Lionel.Messi"
+    ou: "OU=Domain Users,DC=issp,DC=local"
+    upn: "lionel.messi@issp.local"
+    password: "Password123!"
+  - name: "Diego.Maradona"
+    ou: "OU=Domain Users,DC=issp,DC=local"
+    upn: "diego.maradona@issp.local"
+    password: "Password123!"
+  - name: "Faye.Valentine"
+    ou: "OU=Domain Users,DC=issp,DC=local"
+    upn: "faye.valentine@issp.local"
+    password: "Password123!"
+  - name: "Juan.Riquelme"
+    ou: "OU=Domain Users,DC=issp,DC=local"
+    upn: "Juan.Riquelme@issp.local"
+    password: "Password123!"
+  - name: "Johnny.Depp"
+    ou: "OU=Domain Users,DC=issp,DC=local"
+    upn: "johnny.depp@issp.local"
+    password: "Password123!"
+  - name: "svc.web"
+    ou: "OU=Service Accounts,DC=issp,DC=local"
+    upn: "svc.web@issp.local"
+    password: "Password123!"
+  - name: "svc.mssql"
+    ou: "OU=Service Accounts,DC=issp,DC=local"
+    upn: "svc.mssql@issp.local"
+    password: "Password123!"
+
+ad_computers:
+  - name: "spike"
+    ou: "OU=Workstations,DC=issp,DC=local"
+  - name: "fileserver"
+    ou: "OU=Servers,DC=issp,DC=local"
+
+delegation_accounts:
+  - name: "svc.mssql"
+    service: "MSSQLSvc/spike.issp.local"

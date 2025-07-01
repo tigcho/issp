@@ -1,0 +1,14 @@
+---
+- name: VULN - DCSync RIGHTS
+  hosts: dc
+  vars_files:
+    - ../../vars/main.yml
+
+  tasks:
+    - name: grant replicating directory changes
+      win_shell: |
+        $group = "IT Service"
+        $ntAccount = New-Object System.Security.Principal.NTAccount($group)
+        $sid = $ntAccount.Translate([System.Security.Principal.SecurityIdentifier]).Value
+        dsacls.exe "dc={{ domain_name.split('.')[0] }},dc={{ domain_name.split('.')[1] }}" /G "${group}:CA;Replicating Directory Changes"
+        dsacls.exe "dc={{ domain_name.split('.')[0] }},dc={{ domain_name.split('.')[1] }}" /G "${group}:CA;Replicating Directory Changes All"

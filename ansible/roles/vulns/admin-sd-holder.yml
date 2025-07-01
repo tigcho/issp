@@ -1,0 +1,14 @@
+---
+- name: VULN - AdminSDHolder ABUSE
+  hosts: dc
+  gather_facts: false
+  vars_files:
+    - ../../vars/main.yml
+  vars:
+    vuln_group: "IT Service"
+
+  tasks:
+    - name: give writedacl to it service
+      win_shell: |
+        $sid = (Get-ADGroup "{{ vuln_group }}").SID
+        dsacls "CN=AdminSDHolder,CN=System,DC={{ domain_name.split('.')[0] }},DC={{ domain_name.split('.')[1] }}" /G "${sid}:WD"

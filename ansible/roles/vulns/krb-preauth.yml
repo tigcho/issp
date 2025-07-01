@@ -1,0 +1,13 @@
+---
+- name: VULN - AS-REP ROASTING
+  hosts: dc
+  gather_facts: false
+  vars_files:
+    - ../../vars/main.yml
+  vars:
+    target_user: "Faye.Valentine"
+
+  tasks:
+    - name: disable pre-auth for specific user
+      win_shell: |
+        Set-ADAccountControl -Identity "{{ target_user }}" -DoesNotRequirePreAuth $true

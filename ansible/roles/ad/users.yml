@@ -1,0 +1,19 @@
+---
+- name: AD - USERS
+  hosts: dc
+  gather_facts: true
+  vars_files:
+    - ../../vars/main.yml
+
+  tasks:
+    - name: create users
+      microsoft.ad.user:
+        name: "{{ item.name }}"
+        path: "{{ item.ou }}"
+        upn: "{{ item.upn }}"
+        password: "{{ item.password }}"
+        enabled: true
+        password_never_expires: true
+        state: present
+      loop: "{{ ad_users }}"
+   

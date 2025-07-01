@@ -1,0 +1,14 @@
+---
+- name: AD - COMPUTER ACCOUNTS
+  hosts: dc
+  gather_facts: true
+  vars_files:
+    - ../../vars/main.yml
+
+  tasks:
+    - name: create computers
+      microsoft.ad.computer:
+        name: "{{ item.name }}"
+        path: "{{ item.ou }}"
+        state: present
+      loop: "{{ ad_computers }}"

@@ -1,0 +1,58 @@
+---
+- name: VULN - WEAK FILE SHARE
+  hosts: dc
+  gather_facts: false
+  vars_files:
+    - ../../vars/main.yml
+
+  tasks:
+    - name: ensure c:\issp-share exists
+      win_file:
+        path: C:\ISSP-Share
+        state: directory
+
+    - name: create share and grant everyone full control
+      win_share:
+        name: ISSP-Share
+        path: C:\ISSP-Share
+        full: Everyone
+        state: present
+
+    - name: create file with credentials
+      win_copy:
+        dest: "C:\\ISSP-Share\\creds.txt"
+        content: |
+          Domain Administrator
+          --------------------
+          Username: Administrator
+          Password: MyAdminPassword123!
+
+          Active Directory Users
+          ---------------------
+          Name: Lionel.Messi
+          UPN: lionel.messi@issp.local
+          Password: Password123!
+
+          Name: Diego.Maradona
+          UPN: diego.maradona@issp.local
+          Password: Password123!
+
+          Name: Faye.Valentine
+          UPN: faye.valentine@issp.local
+          Password: Password123!
+
+          Name: Juan.Riquelme
+          UPN: Juan.Riquelme@issp.local
+          Password: Password123!
+
+          Name: Johnny.Depp
+          UPN: johnny.depp@issp.local
+          Password: Password123!
+
+          Name: svc.web
+          UPN: svc.web@issp.local
+          Password: Password123!
+
+          Name: svc.mssql
+          UPN: svc.mssql@issp.local
+          Password: Password123!

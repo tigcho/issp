@@ -1,0 +1,15 @@
+---
+- name: VULN - CONSTRAINED DELEGATION
+  hosts: dc
+  gather_facts: false
+  vars_files:
+    - ../../vars/main.yml
+
+  vars:
+    target_account: "{{ delegation_accounts[0].name }}"
+    target_service: "{{ delegation_accounts[0].service }}"
+
+  tasks:
+    - name: set constrained delegation on the service account
+      win_shell: |
+        Set-ADUser -Identity "{{ target_account }}" -Add @{'msDS-AllowedToDelegateTo'='{{ target_service }}'}

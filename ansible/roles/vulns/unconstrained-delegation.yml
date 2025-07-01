@@ -1,0 +1,14 @@
+---
+- name: VULN - UNCONSTRAINED DELEGATION
+  hosts: dc
+  gather_facts: false
+  vars_files:
+    - ../../vars/main.yml
+
+  vars:
+    target_computer: "spike"
+
+  tasks:
+    - name: set unconstrained delegation on a computer object
+      win_shell: |
+        Set-ADComputer -Identity "{{ target_computer }}" -TrustedForDelegation $true

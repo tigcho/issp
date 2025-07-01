@@ -1,0 +1,26 @@
+---
+- name: WKS - JOIN DOMAIN
+  hosts: client
+  vars_files:
+    - ../../vars/main.yml
+
+  tasks:
+    - name: set dns server to dc
+      win_dns_client:
+        adapter_names: '*'
+        dns_servers:
+          - "192.168.56.10"
+        register_this_connection: true
+
+    - name: join the domain 
+      microsoft.ad.membership:
+        dns_domain_name: "{{ domain_name }}"
+        domain_admin_user: "Administrator@{{ domain_name }}"
+        domain_admin_password: "{{ domain_admin_password }}"
+        state: domain
+      register: domain_join
+
+    - name: reboot if required
+      win_reboot:
+        reboot_timeout: 3600
+      when: domain_join.reboot_required is defined and domain_join.reboot_required
