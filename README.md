@@ -53,13 +53,9 @@ inspired by [this script](https://github.com/safebuffer/vulnerable-AD)
 - AS-REP Roasting 
 - SMB Signing Disabled
 - Privilege Escalation (DNS Admins, Group Nesting)
-- Anonymous LDAP Bind
 - Constrained Delegation
 - Unconstrained Delegation
-- DCSync Rights Exposure
-- Weak ACLs
 - Weak Shares
-- AdminSDHolder Abuse
 
 ## What I use
 - [Ansible](https://www.ansible.com/)
