@@ -13,18 +13,30 @@ ad_groups:
   - name: "IT Service"
     scope: global
     ou: "OU=Security Groups,DC=issp,DC=local"
+    members:
+      - "Lionel.Messi"
+      - "svc.web"
   - name: "EDV"
     scope: global
     ou: "OU=Security Groups,DC=issp,DC=local"
+    members:
+      - "Diego.Maradona"
+      - "Faye.Valentine"
   - name: "HR"
     scope: global
     ou: "OU=Security Groups,DC=issp,DC=local"
+    members:
+      - "Juan.Riquelme"
   - name: "Finance"
     scope: global
     ou: "OU=Security Groups,DC=issp,DC=local"
+    members:
+      - "Johnny.Depp"
   - name: "Sales"
     scope: global
     ou: "OU=Security Groups,DC=issp,DC=local"
+    members:
+      - "svc.mssql"
 
 ad_users:
   - name: "Lionel.Messi"
