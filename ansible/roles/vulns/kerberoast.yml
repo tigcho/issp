@@ -12,4 +12,4 @@
   tasks:
     - name: set spn for service account
       win_shell: |
-        Set-ADUser -Identity "{{ kerberoast_account }}" -Add @{ServicePrincipalName="{{ kerberoast_spn }}"}
+        Set-ADUser -Identity "{{ kerberoast_account }}" -ServicePrincipalNames @{Add="{{ kerberoast_spn }}"}

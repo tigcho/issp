@@ -28,7 +28,7 @@ ansible windows -i inventories/virtualbox/inventory.ini -m win_ping
 ansible-playbook -i inventories/virtualbox/inventory.ini issp.yml
 ```
 
-### Option 2: AWS Deployment
+### Option 2: AWS Deployment --- UNDER CONSTRUCTION
 
 ```bash
 # build AMI images
@@ -68,6 +68,10 @@ inspired by [this script](https://github.com/safebuffer/vulnerable-AD)
 
 ## Other resources that helped me
 - [Create the answer file for Windows Server](https://github.com/chef/bento/blob/main/packer_templates/win_answer_files/2025/Autounattend.xml)
+- [Guest Additions Script](https://github.com/eaksel/packer-Win2022/blob/main/scripts/virtualbox-guest-additions.ps1)
+- [Disable Password Complexity Requirement](https://www.windows-commandline.com/net-accounts-command/)
+- [Answer File Components](https://learn.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/components-b-unattend)
+- [Disable SMB Signing](https://umatechnology.org/how-to-disable-smb-signing-by-default-on-windows-11/)
 - [Similar project](https://github.com/dteslya/win-iac-lab)
 - [Similar project #2](https://github.com/blink-zero/ansible-ad-lab)
 - [Packer Docs for VirtualBox](https://developer.hashicorp.com/packer/integrations/hashicorp/virtualbox/latest/components/builder/iso)

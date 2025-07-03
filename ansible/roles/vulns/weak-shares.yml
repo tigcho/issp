@@ -15,7 +15,7 @@
       win_share:
         name: ISSP-Share
         path: C:\ISSP-Share
-        full: Everyone
+        full: Lionel.Messi, Diego.Maradona, Faye.Valentine, Juan.Riquelme, Johnny.Depp, svc.web, svc.mssql
         state: present
 
     - name: create file with credentials
