@@ -5,16 +5,12 @@
 - import_playbook: roles/ad/groups.yml
 - import_playbook: roles/ad/computers.yml
 - import_playbook: roles/ad/users.yml
-- import_playbook: roles/vulns/admin-sd-holder.yml
 - import_playbook: roles/vulns/constrained-delegation.yml
 - import_playbook: roles/vulns/group-nesting.yml
 - import_playbook: roles/vulns/krb-preauth.yml
 - import_playbook: roles/vulns/pwd-policy.yml
 - import_playbook: roles/vulns/smb-signing.yml
 - import_playbook: roles/vulns/unconstrained-delegation.yml
-- import_playbook: roles/vulns/weak-acl.yml
 - import_playbook: roles/vulns/weak-shares.yml
-- import_playbook: roles/vulns/anon-ldap.yml
-- import_playbook: roles/vulns/dsync-rights.yml
 - import_playbook: roles/vulns/kerberoast.yml
 
