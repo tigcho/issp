@@ -1,5 +1,0 @@
-instance_type     = "t3.medium"
-region           = "eu-central-1"
-winrm_username   = "Administrator"
-winrm_password   = "MyAdminPassword123!"
-ami_name         = "SPIKE-CLT"

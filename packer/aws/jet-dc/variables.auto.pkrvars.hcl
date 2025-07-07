@@ -1,5 +1,6 @@
-instance_type     = "t3.medium"
+instance_type     = "t2.micro"
 region           = "eu-central-1"
 winrm_username   = "Administrator"
 winrm_password   = "MyAdminPassword123!"
-ami_name         = "JET-DC"
+ami_name         = "JET-DC-{{timestamp}}"
+source_ami       = "ami-0375163e2f457c342"

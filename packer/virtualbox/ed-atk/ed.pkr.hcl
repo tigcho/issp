@@ -38,7 +38,7 @@ source "virtualbox-iso" "ed" {
   "debian-installer/locale=de_DE <wait>",
   "console-setup/ask_detect=false <wait>",
   "keyboard-configuration/xkb-keymap=de <wait>",
-  "netcfg/choose_interface=auto <wait>",
+  "netcfg/choose_interface=eth0 <wait>",
   "netcfg/get_hostname=ED-ATK <wait>",
   "netcfg/get_domain=issp.local <wait>",
   "passwd/user-fullname=Edward Wong Hau Pepelu Tivruski IV <wait>",

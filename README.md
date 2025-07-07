@@ -1,6 +1,6 @@
-# ISSP - Vulnerable Active Directory Testing Lab
+# ISSP - Inter-Solar System Police
 
-ISSP is an intentionally vulnerable Active Directory testing lab. It is designed for myself or others to explore and practice AD exploitation techniques in a controlled environment.
+ISSP is an intentionally vulnerable Active Directory testing lab. It is designed for myself or others to explore and practice AD exploitation techniques in a controlled environment. In the world of Cowboy Bebop, you are taking the role of Edward Wong Hau Pepelu Tivrusky IV, a brilliant hacker who is trying to infiltrate the ISSP's Active Directory.
 
 ## How to Deploy
 ### Prerequisites
@@ -29,22 +29,7 @@ ansible-playbook -i inventories/virtualbox/inventory.ini issp.yml
 ```
 
 ### Option 2: AWS Deployment --- UNDER CONSTRUCTION
-
-```bash
-# build AMI images
-cd packer/aws/[jet-dc and spike-clt and ed-atk]
-packer build -force .
-
-# deploy infrastructure
-cd ../../../terraform
-terraform init
-terraform apply
-
-# test connectivity and run playbooks on instances
-cd ../ansible
-ansible windows -i inventories/aws/inventory.ini -m win_ping
-ansible-playbook -i inventories/aws/inventory.ini issp.yml
-```
+This feature is not yet implemented, but will be available soon.
 
 ## Vulnerabilities
 inspired by [this script](https://github.com/safebuffer/vulnerable-AD)
@@ -72,6 +57,7 @@ inspired by [this script](https://github.com/safebuffer/vulnerable-AD)
 - [Disable Password Complexity Requirement](https://www.windows-commandline.com/net-accounts-command/)
 - [Answer File Components](https://learn.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/components-b-unattend)
 - [Disable SMB Signing](https://umatechnology.org/how-to-disable-smb-signing-by-default-on-windows-11/)
+- [VBoxManage modifyvm properties](https://docs.oracle.com/en/virtualization/virtualbox/6.0/user/vboxmanage-modifyvm.html)
 - [Similar project](https://github.com/dteslya/win-iac-lab)
 - [Similar project #2](https://github.com/blink-zero/ansible-ad-lab)
 - [Packer Docs for VirtualBox](https://developer.hashicorp.com/packer/integrations/hashicorp/virtualbox/latest/components/builder/iso)

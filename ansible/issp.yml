@@ -1,10 +1,10 @@
 ---
 - import_playbook: roles/dc/jet.yml
-- import_playbook: roles/wks/spike.yml
+# - import_playbook: roles/wks/spike.yml
 - import_playbook: roles/ad/ous.yml 
+- import_playbook: roles/ad/users.yml
 - import_playbook: roles/ad/groups.yml
 - import_playbook: roles/ad/computers.yml
-- import_playbook: roles/ad/users.yml
 - import_playbook: roles/vulns/constrained-delegation.yml
 - import_playbook: roles/vulns/group-nesting.yml
 - import_playbook: roles/vulns/krb-preauth.yml

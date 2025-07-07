@@ -1,5 +1,0 @@
-instance_type     = "t3.medium"
-region           = "eu-central-1"
-ssh_username     = "ubuntu"
-ssh_password     = "kali"
-ami_name         = "ED-ATK"
