@@ -33,6 +33,9 @@ winrm set winrm/config/listener?Address=*+Transport=HTTP '@{Port="5985"}'
 netsh advfirewall firewall add rule name="WinRM-HTTP" dir=in localport=5985 protocol=TCP action=allow
 
 net user Administrator "${var.winrm_password}" /active:yes
+
+rename-computer -newname "JET-DC" -force
+set-timezone -Id "W. Europe Standard Time"
 Write-Output "WinRM configuration complete"
 </powershell>
 EOF

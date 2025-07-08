@@ -24,8 +24,8 @@ packer build -force .
 
 # test connectivity and run playbooks
 cd ../../../ansible
-ansible windows -i inventories/virtualbox/inventory.ini -m win_ping
-ansible-playbook -i inventories/virtualbox/inventory.ini issp.yml
+ansible windows -i virtualbox/inventory.ini -m win_ping
+ansible-playbook -i virtualbox/inventory.ini issp.yml
 ```
 
 ### Option 2: AWS Deployment --- UNDER CONSTRUCTION
@@ -62,3 +62,4 @@ inspired by [this script](https://github.com/safebuffer/vulnerable-AD)
 - [Similar project #2](https://github.com/blink-zero/ansible-ad-lab)
 - [Packer Docs for VirtualBox](https://developer.hashicorp.com/packer/integrations/hashicorp/virtualbox/latest/components/builder/iso)
 - [Ansible modules for Active Directory](https://galaxy.ansible.com/ui/repo/published/microsoft/ad/docs/?extIdCarryOver=true&sc_cid=701f2000001OH7YAAW)
+- [Terraform Documentation for AWS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)
