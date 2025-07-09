@@ -1,0 +1,6 @@
+instance_type = "t2.micro"
+region        = "eu-central-1"
+ssh_username  = "ed"
+ssh_password  = "kali"
+ami_name      = "ED-ATK-{{timestamp}}"
+source_ami    = "ami-0ef32de3e8ab0640e"
