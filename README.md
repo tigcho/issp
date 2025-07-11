@@ -20,7 +20,7 @@ packer plugin install github.com/hashicorp/amazon
 ```bash
 # build images
 cd packer/virtualbox/[jet-dc and spike-clt and ed-atk]
-packer build -force .
+packer build .
 
 # test connectivity and run playbooks
 cd ../../../ansible
@@ -28,8 +28,32 @@ ansible windows -i virtualbox/inventory.ini -m win_ping
 ansible-playbook -i virtualbox/inventory.ini issp.yml
 ```
 
-### Option 2: AWS Deployment --- UNDER CONSTRUCTION
-This feature is not yet implemented, but will be available soon.
+### Option 2: AWS Deployment
+
+```bash
+# configure aws creds
+aws configure
+
+# build images
+cd packer/aws/[jet-dc and ed-atk]
+packer build .
+
+# edit terraform/terraform.tfvars to include custom ami etc
+nvim terraform/terraform.tfvars
+
+# deploy the infrastructure
+cd terraform
+terraform init
+terraform plan
+terraform apply
+
+# edit aws/inventory.ini to include public ip
+nvim ../ansible/aws/inventory.ini
+
+# run playbooks
+cd ../ansible/aws
+ansible-playbook -i inventory.ini issp.yml
+```
 
 ## Vulnerabilities
 inspired by [this script](https://github.com/safebuffer/vulnerable-AD)
