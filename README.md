@@ -34,6 +34,10 @@ ansible-playbook -i virtualbox/inventory.ini issp.yml
 # configure aws creds
 aws configure
 
+# create a keypair for ssh access
+aws ec2 create-key-pair --key-name [name] --query 'KeyMaterial' --output text > [name].pem
+chmod 400 [name].pem
+
 # build images
 cd packer/aws/[jet-dc and ed-atk]
 packer build .

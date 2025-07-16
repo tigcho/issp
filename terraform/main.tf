@@ -60,6 +60,20 @@ resource "aws_security_group" "internal_sg" {
     protocol = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  ingress {
+    from_port   = 5985
+    to_port     = 5985
+    protocol    = "tcp"
+    cidr_blocks = var.trusted_ips
+  }
+
+  ingress {
+    from_port   = 5986
+    to_port     = 5986
+    protocol    = "tcp"
+    cidr_blocks = var.trusted_ips
+  }
 }
 
 resource "aws_instance" "jet_dc" {
@@ -86,4 +100,12 @@ resource "aws_instance" "ed_atk" {
   tags = {
     Name = "ED-ATK"
   }
+}
+
+output "jet_dc_public_ip" {
+  value = aws_instance.jet_dc.public_ip
+}
+
+output "ed_atk_public_ip" {
+  value = aws_instance.ed_atk.public_ip
 }
