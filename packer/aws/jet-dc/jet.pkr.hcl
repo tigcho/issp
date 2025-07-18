@@ -6,14 +6,10 @@ variable "ami_name" {}
 variable "source_ami" {}
 
 source "amazon-ebs" "jet" {
-  region        = var.region
-  instance_type = var.instance_type
-  
-  source_ami = var.source_ami
-  
-  ami_name                    = var.ami_name
-  associate_public_ip_address = true
-  
+  region         = var.region
+  instance_type  = var.instance_type
+  source_ami     = var.source_ami
+  ami_name       = var.ami_name
   communicator   = "winrm"
   winrm_username = var.winrm_username
   winrm_password = var.winrm_password
@@ -26,6 +22,8 @@ source "amazon-ebs" "jet" {
 <powershell>
 Write-Output "Starting WinRM configuration..."
 winrm quickconfig -q
+winrm set winrm/config/winrs '@{MaxMemoryPerShellMB="4096"}'
+winrm set winrm/config '@{MaxTimeoutms="1800000"}'
 winrm set winrm/config/service '@{AllowUnencrypted="true"}'
 winrm set winrm/config/service/auth '@{Basic="true"}'
 winrm set winrm/config/client/auth '@{Basic="true"}'

@@ -2,5 +2,6 @@
 *.tfvars
 *.tfstate
 *.tfstate.*
+*.pem
 !/.gitignore
 

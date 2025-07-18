@@ -1,4 +1,4 @@
-instance_type     = "t2.micro"
+instance_type    = "t2.micro"
 region           = "eu-central-1"
 winrm_username   = "Administrator"
 winrm_password   = "MyAdminPassword123!"

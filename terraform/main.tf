@@ -10,6 +10,25 @@ provider "aws" {
   region = var.region
 }
 
+resource "aws_internet_gateway" "gw" {
+  vpc_id = aws_vpc.issp_vpc.id
+  tags = { Name = "ISSP-IGW" }
+}
+
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.issp_vpc.id
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.gw.id
+  }
+  tags = { Name = "ISSP-Public-RT" }
+}
+
+resource "aws_route_table_association" "a" {
+  subnet_id      = aws_subnet.issp_subnet.id
+  route_table_id = aws_route_table.public.id
+}
+
 resource "aws_vpc" "issp_vpc" {
   cidr_block = "192.168.0.0/16"
   enable_dns_support = true
@@ -95,7 +114,6 @@ resource "aws_instance" "ed_atk" {
   subnet_id = aws_subnet.issp_subnet.id
   vpc_security_group_ids = [aws_security_group.internal_sg.id]
   private_ip = "192.168.1.100"
-  associate_public_ip_address = true
 
   tags = {
     Name = "ED-ATK"
@@ -104,8 +122,4 @@ resource "aws_instance" "ed_atk" {
 
 output "jet_dc_public_ip" {
   value = aws_instance.jet_dc.public_ip
-}
-
-output "ed_atk_public_ip" {
-  value = aws_instance.ed_atk.public_ip
 }
