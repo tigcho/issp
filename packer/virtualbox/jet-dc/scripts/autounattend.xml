@@ -1,3 +1,6 @@
+<!-- https://github.com/chef/bento/blob/main/packer_templates/win_answer_files/2025/Autounattend.xml -->
+<!-- https://learn.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/components-b-unattend -->
+
 <?xml version="1.0" encoding="utf-8"?>
 <unattend xmlns="urn:schemas-microsoft-com:unattend">
     <settings pass="windowsPE">

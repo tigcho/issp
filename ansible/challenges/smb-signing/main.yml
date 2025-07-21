@@ -1,3 +1,4 @@
+# https://umatechnology.org/how-to-disable-smb-signing-by-default-on-windows-11/
 ---
 - name: VULN - SMB SIGNING DISABLED
   hosts: dc

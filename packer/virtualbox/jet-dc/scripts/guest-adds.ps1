@@ -1,3 +1,5 @@
+# https://github.com/eaksel/packer-Win2022/blob/main/scripts/virtualbox-guest-additions.ps1
+
 $ProgressPreference = "SilentlyContinue"
 
 $webclient = New-Object System.Net.WebClient

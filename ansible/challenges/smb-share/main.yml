@@ -15,8 +15,23 @@
       win_share:
         name: ISSP-Share
         path: C:\ISSP-Share
-        full: lionel.messi@issp.local,diego.maradona@issp.local,faye.valentine@issp.local,juan.riquelme@issp.local,johnny.depp@issp.local,svc.web@issp.local,svc.mssql@issp.local
+        full: faye.valentine@issp.local
         state: present
+
+    - name: enable anonymous access to the share
+      win_regedit:
+        path: HKLM:\System\CurrentControlSet\Services\LanmanServer\Parameters
+        name: NullSessionShares
+        type: multistring
+        data: 
+          - ISSP-Share
+
+    - name: allow null sessions
+      win_regedit: 
+        path: HKLM:\System\CurrentControlSet\Services\LanmanServer\Parameters
+        name: RestrictNullSessAccess
+        type: dword
+        data: 0
 
     - name: create file with credentials
       win_copy:

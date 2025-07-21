@@ -1,3 +1,5 @@
+# https://docs.oracle.com/en/virtualization/virtualbox/6.0/user/vboxmanage-modifyvm.html
+
 variable "cpus" {}
 variable "memory" {}
 variable "disk_size" {}

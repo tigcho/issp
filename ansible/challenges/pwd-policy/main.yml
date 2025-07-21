@@ -1,3 +1,4 @@
+# https://www.windows-commandline.com/net-accounts-command/
 ---
 - name: VULN - WEAK PASSWORD POLICY
   hosts: dc

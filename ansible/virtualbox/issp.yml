@@ -1,16 +1,16 @@
 ---
 - import_playbook: ../roles/dc/jet.yml
-- import_playbook: ../roles/wks/spike.yml
+# - import_playbook: ../roles/wks/spike.yml
 - import_playbook: ../roles/ad/ous.yml 
 - import_playbook: ../roles/ad/users.yml
 - import_playbook: ../roles/ad/groups.yml
 - import_playbook: ../roles/ad/computers.yml
-- import_playbook: ../roles/vulns/constrained-delegation.yml
-- import_playbook: ../roles/vulns/group-nesting.yml
-- import_playbook: ../roles/vulns/krb-preauth.yml
-- import_playbook: ../roles/vulns/pwd-policy.yml
-- import_playbook: ../roles/vulns/smb-signing.yml
-- import_playbook: ../roles/vulns/unconstrained-delegation.yml
-- import_playbook: ../roles/vulns/weak-shares.yml
-- import_playbook: ../roles/vulns/kerberoast.yml
+- import_playbook: ../challenges/asreproast/main.yml
+- import_playbook: ../challenges/kerberoasting/main.yml
+- import_playbook: ../challenges/constrained-delegation/main.yml
+- import_playbook: ../challenges/unconstrained-delegation/main.yml
+- import_playbook: ../challenges/group-nesting/main.yml
+- import_playbook: ../challenges/pwd-policy/main.yml
+- import_playbook: ../challenges/smb-signing/main.yml
+- import_playbook: ../challenges/smb-share/main.yml
 

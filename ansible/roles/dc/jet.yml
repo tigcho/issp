@@ -19,6 +19,19 @@
         reboot_timeout: 3600
       when: adds_install.reboot_required is defined and adds_install.reboot_required
 
+    - name: install iis web server
+      win_feature:
+        name:
+          - Web-Server
+        state: present
+        include_sub_features: true
+      register: iis_install
+
+    - name: reboot after iis installation if needed
+      win_reboot:
+        reboot_timeout: 3600
+      when: iis_install.reboot_required is defined and iis_install.reboot_required
+
     - name: check if domain already exists
       win_shell: |
         try {
